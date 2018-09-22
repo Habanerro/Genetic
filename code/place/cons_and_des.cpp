@@ -1,7 +1,6 @@
 #include "header_place.h"
-using namespace Place;
 
-Place(sPlace a)
+Place::Place(sPlace a)
 {
 	lenght = a.lenght;
 	height = a.height;
@@ -12,10 +11,10 @@ Place(sPlace a)
 	wall = a.wall;
 	file = a.file;
 
-	char** p = NULL; 
+	char** ptr = NULL; 
 }
 
-~Place()
+Place::~Place()
 {
 	lenght = 0;
 	height = 0;
@@ -24,7 +23,7 @@ Place(sPlace a)
 	food = 0;
 	poison = 0;
 	wall = 0;
-	file = 0;
+	file = "\0";
 
-	delete p;
+	delete ptr;
 }
