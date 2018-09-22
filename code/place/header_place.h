@@ -17,7 +17,7 @@ struct SettingsPlace {
 	uchar food;		// quantity of food 	'h'()
 	uchar poison;	// quantity of poison 	'p'()
 	uchar wall; 	// quantity of wall's 	'X'()
-	string settings;// name of file of the settings
+	string file;	// name of file of the settings
 };
 typedef struct SettingsPlace sPlace;
 
@@ -30,6 +30,8 @@ public:
 	Place(sPlace);	// normal constructor
 	~Place();		// destructor
 protected:
+	uchar lenght;	// quantity of cols
+	uchar height;	// quantity of rows
 	uchar all;		// quantity of all cell points
 	uchar bot;		// quantity of bots
 	uchar food;		// quantity of food points
@@ -37,6 +39,6 @@ protected:
 	uchar wall;		// quantity of wall points
 
 	char** p;		// pointer to place
-	string settings;// name of file of the settings
+	string file;	// name of file of the settings
 };
 typedef class Place cPlace;
