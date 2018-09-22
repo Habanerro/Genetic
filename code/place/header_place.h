@@ -23,7 +23,7 @@ typedef struct SettingsPlace sPlace;
 
 // information about place in real time
 class Place {
-	friend: main();
+	friend main();
 public:
 	void generate_place(); // to create basis of place
 
@@ -38,7 +38,7 @@ protected:
 	uchar poison;	// quantity of poison points
 	uchar wall;		// quantity of wall points
 
-	char** p;		// pointer to place
+	char** ptr;		// pointer to place
 	string file;	// name of file of the settings
 };
 typedef class Place cPlace;
