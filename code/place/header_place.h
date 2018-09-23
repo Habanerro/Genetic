@@ -25,7 +25,8 @@ typedef struct SettingsPlace sPlace;
 class Place {
 	friend main();
 public:
-	void generate_place(); // to create basis of place
+	void generate_place();	// to create basis of place
+	void print_place();		// to show genetic location
 
 	Place(sPlace);	// normal constructor
 	Place();		// default constrtuctor
