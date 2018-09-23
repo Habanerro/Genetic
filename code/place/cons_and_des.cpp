@@ -11,7 +11,8 @@ Place::Place(sPlace a)
 	wall = a.wall;
 	file = a.file;
 
-	char** ptr = NULL; 
+	char** ptr = NULL;
+	log.open("../log_place.txt", ios::app);
 }
 
 Place::~Place()
@@ -26,4 +27,5 @@ Place::~Place()
 	file = "\0";
 
 	delete ptr;
+	log.close();
 }

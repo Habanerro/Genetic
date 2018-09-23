@@ -40,5 +40,6 @@ protected:
 
 	char** ptr;		// pointer to place
 	string file;	// name of file of the settings
+	ofstream log;	// inforamtion about working
 };
 typedef class Place cPlace;
