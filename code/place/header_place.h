@@ -7,36 +7,41 @@
 #include <ctime>
 using namespace std;
 
-typedef unsigned char uchar;
+typedef unsigned int unint;
 
 // start settings of place
 struct SettingsPlace {
-	uchar lenght;	// quantity of cols - длина
-	uchar height;	// quantity of rows - высота
-	uchar bot;		// quantity of bots		'O'()
-	uchar food;		// quantity of food 	'h'()
-	uchar poison;	// quantity of poison 	'p'()
-	uchar wall; 	// quantity of wall's 	'X'()
-	string settings;// name of file of the settings
+	unint lenght;	// quantity of cols - длина
+	unint height;	// quantity of rows - высота
+	unint bot;		// quantity of bots		'O'()
+	unint food;		// quantity of food 	'h'()
+	unint poison;	// quantity of poison 	'p'()
+	unint wall; 	// quantity of wall's 	'X'()
+	string file;	// name of file of the settings
 };
 typedef struct SettingsPlace sPlace;
 
 // information about place in real time
 class Place {
-	friend: main();
+	friend main();
 public:
 	void generate_place(); // to create basis of place
 
 	Place(sPlace);	// normal constructor
+	Place();		// default constrtuctor
 	~Place();		// destructor
 protected:
-	uchar all;		// quantity of all cell points
-	uchar bot;		// quantity of bots
-	uchar food;		// quantity of food points
-	uchar poison;	// quantity of poison points
-	uchar wall;		// quantity of wall points
+	unint lenght;	// quantity of cols
+	unint height;	// quantity of rows
+	unint all;		// quantity of all cell points
+	unint bot;		// quantity of bots
+	unint food;		// quantity of food points
+	unint poison;	// quantity of poison points
+	unint wall;		// quantity of wall points
 
-	char** p;		// pointer to place
-	string settings;// name of file of the settings
+	char** ptr;		// pointer to place
+	string file;	// name of file of the settings
+
+	ofstream log;	// inforamtion about working
 };
 typedef class Place cPlace;
