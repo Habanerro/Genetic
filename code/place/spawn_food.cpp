@@ -15,8 +15,8 @@ void Place::spawn_food()
 		for (g = 0; g < food; g++) {
 			i = 1 + rand() % nHeight;
 			j = 1 + rand() % nLenght;
-			log << "\t\t\ti = " << i
-				<< "; j = " << j << endl;
+			//log << "\t\t\ti = " << i
+			//	<< "; j = " << j << endl;
 			while (ptr[i][j] != '_') {
 				v = rand() % 4;
 				switch (v) {
@@ -29,5 +29,5 @@ void Place::spawn_food()
 			ptr[i][j] = 'f';
 		}
 
-	log << "t End spawn_food" << endl;
+	log << "\tEnd spawn_food" << endl;
 }
