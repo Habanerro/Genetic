@@ -25,6 +25,7 @@ typedef struct SettingsPlace sPlace;
 class Place {
 	friend main();
 	friend class Bot;
+	friend relationship();
 public:
 	void generate_place();	// to create basis of place
 	void print_place();		// to show genetic location
