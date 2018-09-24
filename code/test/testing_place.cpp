@@ -4,10 +4,10 @@ int main()
 {
 	ofstream test;
 	test.open("../test_log.txt", ios::trunc);
-	int p = 0, f = 0, b = 0, w = 0, g = 0, j = 0, i = 0;
+	int po = 0, f = 0, b = 0, w = 0, g = 0, j = 0, i = 0;
 
 	test << "Testing program:" << endl;
-	test << "\tPlace's function:" << endl;
+	test << "\tPlace's function:\n\t{" << endl;
 
 	sPlace a;
 	a.lenght = 28;
@@ -28,16 +28,16 @@ int main()
 		p.spawn_poison();
 		p.spawn_bot();
 
-		p = 0; f = 0; b = 0; w = 0;
+		po = 0; f = 0; b = 0; w = 0;
 
 		for (i = 1; i < p.height - 1; i++) {
 			for (j = 1; j < p.lenght - 1; j++) {
-				switch(ptr[i][j]) {
+				switch(p.ptr[i][j]) {
 					case 'O': b++;
 						break;
 					case 'X': w++;
 						break;
-					case 'p': p++;
+					case 'p': po++;
 						break;
 					case 'f': f++;
 						break;
@@ -46,26 +46,27 @@ int main()
 		}
 
 		if (b == p.bot) {
-			test << "\t\t\tBot: " << "[correct]" << endl;
+			test << "\t\t\tBot:    " << "[correct]" << endl;
 		} else {
-			test << "\t\t\tBot: " << "[incorrect]" << endl;
+			test << "\t\t\tBot:    " << "[incorrect]" << endl;
 		}
 		if (w == p.wall) {
-			test << "\t\t\tWall: " << "[correct]" << endl;
+			test << "\t\t\tWall:   " << "[correct]" << endl;
 		} else {
-			test << "\t\t\tWall: " << "[incorrect]" << endl;
+			test << "\t\t\tWall:   " << "[incorrect]" << endl;
 		}
 		if (f == p.food) {
-			test << "\t\t\tFood: " << "[correct]" << endl;
+			test << "\t\t\tFood:   " << "[correct]" << endl;
 		} else {
-			test << "\t\t\tFood: " << "[incorrect]" << endl;
+			test << "\t\t\tFood:   " << "[incorrect]" << endl;
 		}
-		if (p == p.poison) {
+		if (po == p.poison) {
 			test << "\t\t\tPoison: " << "[correct]" << endl;
 		} else {
 			test << "\t\t\tPoison: " << "[incorrect]" << endl;
 		}
 	}
+	test << "\t}" << endl;
 
 	return 0;
 }
