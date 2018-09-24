@@ -25,7 +25,7 @@ typedef struct SettingsPlace sPlace;
 class Place {
 	friend main();
 	friend class Bot;
-	friend relationship();
+	friend void relationship(class Bot*, class Place);
 public:
 	void generate_place();	// to create basis of place
 	void print_place();		// to show genetic location
@@ -37,7 +37,7 @@ public:
 	Place(sPlace);	// normal constructor
 	Place();		// default constrtuctor
 	~Place();		// destructor
-protected:
+private:
 	unint lenght;	// quantity of cols
 	unint height;	// quantity of rows
 	unint all;		// quantity of all cell points
