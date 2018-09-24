@@ -9,6 +9,8 @@ Bot::Bot()
 	lp = 50;
 	ya = 0;
 	next = 0;
+	x = 0;
+	y = 0;
 
 	gen = new uchar[gquant];
 	for (int i = 0; i < gquant; i++) {
@@ -28,6 +30,8 @@ Bot::~Bot()
 	lp = 0;
 	ya = 0;
 	next = 0;
+	x = 0;
+	y = 0;
 
 	delete gen;
 	log << "\t*--destructor--*" << endl;
