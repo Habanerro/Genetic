@@ -22,10 +22,10 @@ void Place::print_place()
 						printf("\033[36m  %c\033[0m", ptr[i][j]);
 						break;
 					case 'f':
-						printf("\033[32m  %c\033[0m", ptr[i][j]);
+						printf("\033[32m  *\033[0m");
 						break;
 					case 'p':
-						printf("\033[31m  %c\033[0m", ptr[i][j]);
+						printf("\033[31m  *\033[0m");
 						break;
 				}
 			}
