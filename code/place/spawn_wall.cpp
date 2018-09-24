@@ -19,13 +19,13 @@ void Place::spawn_wall()
 
 	log << "\t\tStaring generation..." << endl;
 		log << "\t\t\tWe waiting " << segments << " wall's segments" << endl;
+		log << "\t\t\tnHeight = " << nHeight
+			<< "; nLenght = " << nLenght << endl;
 
 		for (k = 0; k < segments; k++) {
 			j = 5 + rand() % nLenght;
 			i = 5 + rand() % nHeight;
 			direction = rand() % 4;
-			log << "\t\t\tnHeight = " << nHeight
-				<< "; nLenght = " << nLenght << endl;
 			log << "\t\t\ti = " << i
 				<< "; j = " << j
 				<< "; direction = " << direction
