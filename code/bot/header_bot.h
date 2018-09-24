@@ -7,22 +7,28 @@
 #include <ctime>
 
 #include "../place/header_place.h"
+typedef unsigned char uchar;
 using namespace std;
 
 class Bot {
 	friend main();
+	friend class Place;
 public:
 
 	Bot();	// constructor
 	~Bot();	// destructor
 protected:
 	unint gquant;	// quantity of gens in genetic matrix
+	unint range;	// range of command
 	unint grn;		// gen right now - pointer to gen in genetic matrix
 	unint hp;		// healths points
 	unint lp;		// live points - all hp in the bot's live
 	unint ya;		// index of this bot
 	unint next;		// index of the next undead bot in the
+	unint x;		// 
+	unint y;		// coordinates of bot on the location
 
-	char* gen;		// genetic matrix
+	uchar* gen;		// genetic matrix
 	ofstream log;	// information about working
 };
+typedef class Bot cBot;

@@ -6,9 +6,7 @@
 #include <cmath>
 #include <ctime>
 
-#include "../bot/header_bot.h"
 using namespace std;
-
 typedef unsigned int unint;
 
 // start settings of place
@@ -26,6 +24,7 @@ typedef struct SettingsPlace sPlace;
 // information about place in real time
 class Place {
 	friend main();
+	friend class Bot;
 public:
 	void generate_place();	// to create basis of place
 	void print_place();		// to show genetic location
