@@ -28,7 +28,7 @@ public:
 	void generate_place();	// to create basis of place
 	void print_place();		// to show genetic location
 	void spawn_wall();		// to add walls on the location
-
+	void spawn_food();		// to add foot on the place
 
 	Place(sPlace);	// normal constructor
 	Place();		// default constrtuctor

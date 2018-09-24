@@ -19,7 +19,7 @@ void Place::print_place()
 						printf("\033[2m  %c\033[0m", ptr[i][j]);
 						break;
 					case 'O':
-						printf("\033[34m  %c\033[0m", ptr[i][j]);
+						printf("\033[36m  %c\033[0m", ptr[i][j]);
 						break;
 					case 'f':
 						printf("\033[32m  %c\033[0m", ptr[i][j]);
