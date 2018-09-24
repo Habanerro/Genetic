@@ -14,23 +14,26 @@ void Place::spawn_wall()
 	unint nLenght = lenght - 10;
 	unint nHeight = height - 10;
 
-	int i = 0, j = 0, g = 0, k = 0, m = 0;
+	int i = 0, j = 0, g = 0, k = 0, m = 0, n = 0;
+	int a = 0; // buffer for offset
 
 	log << "\t\tStaring generation..." << endl;
 		log << "\t\t\tWe waiting " << segments << " wall's segments" << endl;
 
 		for (k = 0; k < segments; k++) {
-			i = 5 + rand() % nLenght;
-			j = 5 + rand() % nHeight;
+			j = 5 + rand() % nLenght;
+			i = 5 + rand() % nHeight;
 			direction = rand() % 4;
 			log << "\t\t\tnHeight = " << nHeight
 				<< "; nLenght = " << nLenght << endl;
 			log << "\t\t\ti = " << i
 				<< "; j = " << j
-				<< "; direction = " << direction << endl;
+				<< "; direction = " << direction
+				<< "; k = " << k << endl;
 			switch (direction) {
 				case 0: // up
-					for (g = i; g < q; g++) {
+					a = i;
+					for (g = 0; g < q; g++) {
 						delta = rand() % 2;
 						chance = rand() % 3;
 						m = 0;
@@ -43,11 +46,13 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
-						ptr[g][j + m] = 'X';
+						ptr[a][j + m] = 'X';
+						a++;
 					}
 					break;
 				case 1:	// down
-					for (g = i; g < q; g--) {
+					a = i;
+					for (g = 0; g < q; g++) {
 						delta = rand() % 2;
 						chance = rand() % 3;
 						m = 0;
@@ -60,11 +65,13 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
-						ptr[g][j + m] = 'X';
+						ptr[a][j + m] = 'X';
+						a--;
 					}
 					break;
 				case 2:	// right
-					for (g = j; g < q; g++) {
+					a = j;
+					for (g = 0; g < q; g++) {
 						delta = rand() % 2;
 						chance = rand() % 3;
 						m = 0;
@@ -77,11 +84,13 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
-						ptr[i + m][g] = 'X';
+						ptr[i + m][a] = 'X';
+						a++;
 					}
 					break;
 				case 3:	// left
-					for (g = j; g < q; g--) {
+					a = j;
+					for (g = 0; g < q; g++) {
 						delta = rand() % 2;
 						chance = rand() % 3;
 						m = 0;
@@ -94,7 +103,8 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
-						ptr[i + m][g] = 'X';
+						ptr[i + m][a] = 'X';
+						a--;
 					}
 					break;
 			}
