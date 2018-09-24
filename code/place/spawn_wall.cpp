@@ -46,6 +46,14 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
+
+						while (ptr[a][j + m] == 'X') {
+							if (delta = 0) {
+								m++;
+							} else {
+								m--;
+							}
+						}
 						ptr[a][j + m] = 'X';
 						a++;
 					}
@@ -63,6 +71,13 @@ void Place::spawn_wall()
 							} else {
 								// to right
 								m = -1;
+							}
+						}
+						while (ptr[a][j + m] == 'X') {
+							if (delta = 0) {
+								m++;
+							} else {
+								m--;
 							}
 						}
 						ptr[a][j + m] = 'X';
@@ -84,6 +99,13 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
+						while (ptr[i + m][a] == 'X') {
+							if (delta = 0) {
+								m++;
+							} else {
+								m--;
+							}
+						}
 						ptr[i + m][a] = 'X';
 						a++;
 					}
@@ -101,6 +123,13 @@ void Place::spawn_wall()
 							} else {
 								// to right
 								m = -1;
+							}
+						}
+						while (ptr[i + m][a] == 'X') {
+							if (delta = 0) {
+								m++;
+							} else {
+								m--;
 							}
 						}
 						ptr[i + m][a] = 'X';
