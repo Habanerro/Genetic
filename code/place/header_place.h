@@ -5,6 +5,8 @@
 #include <cstdio>
 #include <cmath>
 #include <ctime>
+
+#include "../bot/header_bot.h"
 using namespace std;
 
 typedef unsigned int unint;
