@@ -27,6 +27,8 @@ class Place {
 public:
 	void generate_place();	// to create basis of place
 	void print_place();		// to show genetic location
+	void spawn_wall();		// to add walls on the location
+
 
 	Place(sPlace);	// normal constructor
 	Place();		// default constrtuctor
