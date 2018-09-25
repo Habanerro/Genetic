@@ -1,5 +1,5 @@
 
-.PHONY: all mtest totest mgame togame iplace ibot itest
+.PHONY: all mtest totest mgame togame iplace ibot itest clean
 
 all: mtest mgame
 
@@ -23,3 +23,6 @@ itest: code/test/testing_place.cpp
 
 bin:
 	mkdir bin;
+
+clean:
+	rm bin/*
