@@ -11,9 +11,8 @@ typedef unsigned char uchar;
 using namespace std;
 
 class Bot {
-	friend main();
+	friend int main();
 	friend class Place;
-	friend void relationship(class Bot*, class Place);
 public:
 
 	Bot();	// constructor

@@ -13,7 +13,7 @@ void Place::spawn_poison()
 		// we divide place on four fourth
 		unint lmid = nLenght / 2;
 		unint hmid = nHeight / 2;
-		unint fourth = -1;
+		unint fourth = 0;
 
 		log << "\t\t\tnHeight = " << nHeight
 			<< "; nLenght = " << nLenght << endl;
