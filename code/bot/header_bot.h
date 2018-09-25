@@ -13,12 +13,12 @@ using namespace std;
 class Bot {
 	friend main();
 	friend class Place;
-	friend relationship();
+	friend void relationship(class Bot*, class Place);
 public:
 
 	Bot();	// constructor
 	~Bot();	// destructor
-protected:
+private:
 	unint gquant;	// quantity of gens in genetic matrix
 	unint range;	// range of command
 	unint grn;		// gen right now - pointer to gen in genetic matrix
