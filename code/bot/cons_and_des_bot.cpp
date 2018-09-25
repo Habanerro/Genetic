@@ -17,7 +17,7 @@ Bot::Bot()
 		gen[i] = rand() % range;
 	}
 
-	log.open("../log.txt", ios::app);
+	log.open("log.txt", ios::app);
 	log << "\t*--constructor--*" << endl;
 }
 

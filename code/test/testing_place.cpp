@@ -3,7 +3,7 @@
 int main()
 {
 	ofstream test;
-	test.open("../test_log.txt", ios::trunc);
+	test.open("test_log.txt");
 	int po = 0, f = 0, b = 0, w = 0, g = 0, j = 0, i = 0;
 
 	test << "Testing program:" << endl;
