@@ -13,6 +13,7 @@ using namespace std;
 class Bot {
 	friend int main();
 	friend class Place;
+	friend void relationship(Place*, Bot*);
 public:
 
 	Bot();	// constructor
