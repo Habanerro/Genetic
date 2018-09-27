@@ -13,7 +13,7 @@ Place::Place(sPlace a)
 
 	char** ptr = NULL;
 	log.open("log.txt", ios::app);
-	log << "\t*--normal constructor--*" << endl;
+	log << "\t*--normal constructor-place-*" << endl;
 }
 
 Place::Place()
@@ -29,7 +29,7 @@ Place::Place()
 
 	char** ptr = NULL;
 	log.open("log.txt", ios::app);
-	log << "\t*--default constructor--*" << endl;
+	log << "\t*--default constructor-place-*" << endl;
 }
 
 Place::~Place()
@@ -44,6 +44,6 @@ Place::~Place()
 	file = "\0";
 
 	delete ptr;
-	log << "\t*--destructor--*" << endl;
+	log << "\t*--destructor-place-*" << endl;
 	log.close();
 }

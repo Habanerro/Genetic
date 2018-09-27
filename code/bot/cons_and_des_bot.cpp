@@ -18,7 +18,7 @@ Bot::Bot()
 	}
 
 	log.open("log.txt", ios::app);
-	log << "\t*--constructor--*" << endl;
+	log << "\t*--constructor-bot-*" << endl;
 }
 
 Bot::~Bot()
@@ -34,6 +34,6 @@ Bot::~Bot()
 	y = 0;
 
 	delete gen;
-	log << "\t*--destructor--*" << endl;
+	log << "\t*--destructor-bot-*" << endl;
 	log.close();
 }
