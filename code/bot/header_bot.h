@@ -24,10 +24,9 @@ private:
 	unint grn;		// gen right now - pointer to gen in genetic matrix
 	unint hp;		// healths points
 	unint lp;		// live points - all hp in the bot's live
-	unint ya;		// index of this bot
-	unint next;		// index of the next undead bot in the
 	unint x;		// 
 	unint y;		// coordinates of bot on the location
+	unint flag;		// information of live - 0 = dead
 
 	uchar* gen;		// genetic matrix
 	ofstream log;	// information about working
