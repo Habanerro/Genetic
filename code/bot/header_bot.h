@@ -15,7 +15,7 @@ class Bot {
 	friend class Place;
 	friend void relationship(Place*, Bot*);
 public:
-
+	void turn(Place*);	// one turn of one bot
 	Bot();	// constructor
 	~Bot();	// destructor
 private:
