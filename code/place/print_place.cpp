@@ -4,9 +4,8 @@ void Place::print_place()
 {
 	log << "\tTo print" << endl;
 	
-	system("chcp 65001");
 	system("cls");
-		log << "\t\t Clear console + encode Unicode" << endl;
+		log << "\t\t Clear console" << endl;
 		int i = 0, j = 0;
 		for (i = 0; i < height; i++) {
 			cout << "\n " << endl;
