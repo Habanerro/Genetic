@@ -21,11 +21,11 @@ void Place::spawn_bot()
 		for (g = 0; g < bot; g++) {
 			i = 1 + rand() % nHeight;
 			j = 1 + rand() % nLenght;
-			if (i > hmid) {
-				if (j > lmid) {fourth = 4;} else {fourth = 3;}
-			} else {
-				if (j > lmid) {fourth = 1;} else {fourth = 2;}
-			}
+				if (i > hmid) {
+					if (j > lmid) {fourth = 4;} else {fourth = 3;}
+				} else {
+					if (j > lmid) {fourth = 1;} else {fourth = 2;}
+				}
 			//log << "\t\t\ti = " << i
 			//	<< "; j = " << j << endl;
 			while (ptr[i][j] != '_') {

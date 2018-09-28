@@ -22,11 +22,13 @@ void Place::spawn_one()
 	unint what = rand() % 3;
 	unint i = 1 + rand() % nHeight;
 	unint j = 1 + rand() % nLenght;
+
 	if (i > hmid) {
 		if (j > lmid) {fourth = 4;} else {fourth = 3;}
 	} else {
 		if (j > lmid) {fourth = 1;} else {fourth = 2;}
 	}
+	
 	while (ptr[i][j] != '_') {
 		v = rand() % 2;
 		switch (fourth) {
