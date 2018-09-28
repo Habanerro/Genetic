@@ -2,9 +2,11 @@
 
 void Bot::turn(Place* p)
 {
+	srand( time(NULL) );
 	log << "\tTurn (x = " << x << "; y = " << y << ")" << endl;
 
 	unint command = gen[grn];	// summaty command
+	unint score = 0;
 	log << "\t\tgen[grn] = " << command << endl;
 	log << "\t\tgrn = " << grn << endl;
 		// 7 < command < 16 || 31 < command < 40
@@ -12,8 +14,14 @@ void Bot::turn(Place* p)
 	unint x2 = x;	// coordinates for lookup geks
 	unint y2 = y;	// on the place
 
+	a:
+	command = gen[grn];
+	score = 0;
+	x2 = x;
+	y2 = y;
+
 	while((command > -1 && command < 8) || (command > 15 && command < 32)) {
-		if (command >= 0 && command <= 7) {
+		if (command > -1 && command < 8) {
 			x2 = x;
 			y2 = y;
 			// to make coordintes for lookup
@@ -60,6 +68,17 @@ void Bot::turn(Place* p)
 			}
 			log << "\t\t\tgrn = " << grn << endl;
 			command = gen[grn];
+			
+			score++;
+			if (score == 10) {
+				log << "\t#CYCLE!" << endl;
+				grn = grn + rand() % 10;
+				if (grn >= gquant) {
+					grn = grn - gquant - 1;
+				}
+				goto a;
+			}
+
 			log << "\t\t\tgen[grn] = " << command << endl;
 
 		} else if (command >= 16 && command <= 31) {
@@ -70,6 +89,17 @@ void Bot::turn(Place* p)
 				log << "\t\t\tgrn = " << grn << endl;
 			}
 			command = gen[grn];
+			
+			score++;
+			if (score == 10) {
+				log << "\t#CYCLE!" << endl;
+				grn = grn + rand() % 10;
+				if (grn >= gquant) {
+					grn = grn - gquant - 1;
+				}
+				goto a;
+			}
+
 			log << "\t\t\tgen[grn] = " << command << endl;
 		}
 	}
