@@ -12,6 +12,6 @@ void Bot::mutation()
 	} else {
 		gen[i]--;
 	}
-	log << "\t\tMutation: index = " << i << "; value = " << gen[i] << endl;
+	log << "\t\tMutation: gen = " << i << "; value = " << gen[i] << endl;
 	log << "\tEnd mutation" << endl;
 }
