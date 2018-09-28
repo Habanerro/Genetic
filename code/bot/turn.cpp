@@ -69,8 +69,8 @@ void Bot::turn(Place* p)
 				grn = grn - gquant - 1;
 				log << "\t\t\tgrn = " << grn << endl;
 			}
-			log << "\t\t\tgen[grn] = " << command << endl;
 			command = gen[grn];
+			log << "\t\t\tgen[grn] = " << command << endl;
 		}
 	}
 
@@ -100,6 +100,121 @@ void Bot::turn(Place* p)
 		}
 		log << "\t\t\tTo go: x2 = " << x2
 			<< "; y2 = " << y2 << endl;
+
+		switch (p -> ptr[x2][y2]) {
+				case 'O':
+				case 'X':
+					log << "\t\t\t\tI meet bot/wall!" << endl;
+					hp--;
+					if (hp == 0) {
+						flag = 0;
+						p -> ptr[x][y] = '_';
+					}
+					break;
+				case 'f':
+					log << "\t\t\t\tI meet food!" << endl;
+					p -> ptr[x2][y2] = 'O';
+					p -> ptr[x][y] = '_';
+					x = x2;
+					y = y2;
+					lp += 10;
+					hp += 10;
+					if (hp > 100) {
+						hp = 100;
+					}
+					hp--;
+					break;
+				case 'p':
+					log << "\t\t\t\tI meet poison!" << endl;
+					p -> ptr[x][y] = '_';
+					p -> ptr[x2][y2] = '_';
+					hp = 0;
+					flag = 0;
+					break;
+				case '_':
+					log << "\t\t\t\tI meet free geks!" << endl;
+					p -> ptr[x2][y2] = 'O';
+					p -> ptr[x][y] = '_';
+					x = x2;
+					y = y2;
+					hp--;
+					if (hp == 0) {
+						flag = 0;
+						p -> ptr[x2][y2] = '_';
+					}
+					break;
+			}
+	} else if (command >= 32 && command <= 39) {
+		log << "\t\tSmart to go" << endl;
+		switch (command) {
+			case 32: x2++; y2--;
+				break;
+			case 33: x2++;
+				break;
+			case 34: x2++; y2++;
+				break;
+			case 35: y2++;
+				break;
+			case 36: x2--; y2++;
+				break;
+			case 37: x2--;
+				break;
+			case 38: x2--; y2--;
+				break;
+			case 39: y2--;
+				break;
+		}
+		log << "\t\t\tTo go: x2 = " << x2
+			<< "; y2 = " << y2 << endl;
+		switch (p -> ptr[x2][y2]) {
+				case 'O':
+				case 'X':
+					log << "\t\t\t\tI meet bot/wall!" << endl;
+					hp--;
+					if (hp == 0) {
+						flag = 0;
+						p -> ptr[x][y] = '_';
+					}
+					break;
+				case 'f':
+					log << "\t\t\t\tI meet food!" << endl;
+					p -> ptr[x2][y2] = 'O';
+					p -> ptr[x][y] = '_';
+					x = x2;
+					y = y2;
+					lp += 10;
+					hp += 10;
+					if (hp > 100) {
+						hp = 100;
+					}
+					hp--;
+					break;
+				case 'p':
+					log << "\t\t\t\tI meet poison!" << endl;
+					p -> ptr[x2][y2] = 'O';
+					p -> ptr[x][y] = '_';
+					x = x2;
+					y = y2;
+					lp += 10;
+					hp += 10;
+					if (hp > 100) {
+						hp = 100;
+					}
+					hp--;
+					break;
+				case '_':
+					log << "\t\t\t\tI meet free geks!" << endl;
+					p -> ptr[x2][y2] = 'O';
+					p -> ptr[x][y] = '_';
+					x = x2;
+					y = y2;
+					hp--;
+					if (hp == 0) {
+						flag = 0;
+						p -> ptr[x2][y2] = '_';
+					}
+					break;
+			}
 	}
 
 	log << "\tEnd turn (command: " << command << ")" << endl;
