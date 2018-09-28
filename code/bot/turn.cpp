@@ -5,255 +5,207 @@ void Bot::turn(Place* p)
 	srand( time(NULL) );
 	log << "\tTurn (x = " << x << "; y = " << y << ")" << endl;
 
-	unint command = gen[grn];	// summaty command
-	unint score = 0;
-	log << "\t\tgen[grn] = " << command << endl;
-	log << "\t\tgrn = " << grn << endl;
-		// 7 < command < 16 || 31 < command < 40
+	unint score = 0, cycle = 0, max = 3;	// anticycle
+	unint xl, yl;	// coordinates for look
+	unint xg, yg;	// coordinate for go
+	unint command;	// command for doing
 
-	unint x2 = x;	// coordinates for lookup geks
-	unint y2 = y;	// on the place
-
-	a:
 	command = gen[grn];
+	xl = x; yl = y;
+	xg = x; yg = y;
 	score = 0;
-	x2 = x;
-	y2 = y;
+	log << "\t\tcommand = " << command << "; grn = " << grn << endl;
+	log	<< "\t\txlook = " << xl << "; ylook = " << yl << endl;
+	log	<< "\t\txgo = " << xg << "; ygo " << yg << endl;
 
-	while((command > -1 && command < 8) || (command > 15 && command < 32)) {
-		if (command > -1 && command < 8) {
-			x2 = x;
-			y2 = y;
-			// to make coordintes for lookup
-			switch(command) {
-				case 0: x2++; y2--;
-					break;
-				case 1: x2++;
-					break;
-				case 2: x2++; y2++;
-					break;
-				case 3: y2++;
-					break;
-				case 4: x2--; y2++;
-					break;
-				case 5: x2--;
-					break;
-				case 6: x2--; y2--;
-					break;
-				case 7: y2--;
-					break;
+	while (((command >= 0 && command <= 7) || (command >= 16 && command <= 31)) && cycle == 0) {
+		if (command >= 0 && command <= 7) {
+			log << "\t\t\tLook (" << command << ")" << endl;
+			switch (command) {
+				case 0: xl++; yl--; break;
+				case 1: xl++; break;
+				case 2: xl++; yl++; break;
+				case 3: yl++; break;
+				case 4: xl--; yl++; break;
+				case 5: xl--; break;
+				case 6: xl--; yl--; break;
+				case 7: yl--; break;
 			}
-			log << "\t\t\tLookup: x2 = " << x2
-				<< "; y2 = " << y2 << endl;
-			// lookup on the place
-			switch (p -> ptr[x2][y2]) {
-				case 'O':
-					grn += 5;
-					break;
-				case 'X':
-					grn += 4;
-					break;
-				case 'f':
-					grn += 2;
-					break;
-				case 'p':
-					grn += 3;
-					break;
-				case '_':
-					grn += 1;
-					break;
+			switch (p -> ptr[xl][yl]) {
+				case '_': grn += 1; break;
+				case 'f': grn += 2; break;
+				case 'p': grn += 3; break;
+				case 'X': grn += 4; break;
+				case 'O': grn += 5; break;
 			}
-			if (grn >= gquant) {
+			if (grn > gquant) {
 				grn = grn - gquant - 1;
+			} else if (grn == gquant) {
+				grn = 0;
 			}
-			log << "\t\t\tgrn = " << grn << endl;
 			command = gen[grn];
+			log << "\t\t\tLook: grn -> " << grn
+				<< "; command -> " << command << endl;
 			
 			score++;
-			if (score == 10) {
-				log << "\t#CYCLE!" << endl;
-				grn = grn + rand() % 10;
-				if (grn >= gquant) {
-					grn = grn - gquant - 1;
-				}
-				goto a;
+			if (score == max) {
+				log << "\t#CYCLE" << endl;
+				cycle = 1;
 			}
-
-			log << "\t\t\tgen[grn] = " << command << endl;
-
-		} else if (command >= 16 && command <= 31) {
+		} else {
+			log << "\t\t\tTo go (" << command << ")" << endl;
 			grn += command;
-			log << "\t\t\tgrn = " << grn << endl;
-			if (grn >= gquant) {
+			if (grn > gquant) {
 				grn = grn - gquant - 1;
-				log << "\t\t\tgrn = " << grn << endl;
+			} else if (grn == gquant) {
+				grn = 0;
 			}
 			command = gen[grn];
-			
-			score++;
-			if (score == 10) {
-				log << "\t#CYCLE!" << endl;
-				grn = grn + rand() % 10;
-				if (grn >= gquant) {
-					grn = grn - gquant - 1;
-				}
-				goto a;
-			}
+			log << "\t\t\tTo go: grn -> " << grn
+				<< "; command -> " << command << endl;
 
-			log << "\t\t\tgen[grn] = " << command << endl;
+			score++;
+			if (score == max) {
+				log << "\t#CYCLE" << endl;
+				cycle = 1;
+			}
+		}
+
+		if (cycle == 1) {
+			grn = grn + rand() % max;
+			if (grn > gquant) {
+				grn = grn - gquant - 1;
+			} else if (grn == gquant) {
+				grn = 0;
+			}
+			command = gen[grn];
+			score = 0;
+			cycle = 0;
+			xl = x;
+			yl = y;
+			log << "\t\t\tRestart: grn -> " << grn
+				<< "; command -> " << command << endl;
 		}
 	}
 
-	x2 = x;
-	y2 = y;
-
-	// ready to go
 	if (command >= 8 && command <= 15) {
-		log << "\t\tSimple to go" << endl;
+		log << "\t\tSimple: " << command << endl;
 		switch (command) {
-			case 8: x2++; y2--;
-				break;
-			case 9:	x2++;
-				break;
-			case 10: x2++; y2++;
-				break;
-			case 11: y2++;
-				break;
-			case 12: x2--; y2++;
-				break;
-			case 13: x2--;
-				break;
-			case 14: x2--; y2--;
-				break;
-			case 15: y2--;
-				break;
+			case 8: xg++; yg--; break;
+			case 9: xg++; break;
+			case 10: xg++; yg++; break;
+			case 11: yg++; break;
+			case 12: xg--; yg++; break;
+			case 13: xg--; break;
+			case 14: xg--; yg--; break;
+			case 15: yg--; break;
 		}
-		log << "\t\t\tTo go: x2 = " << x2
-			<< "; y2 = " << y2 << endl;
-
-		switch (p -> ptr[x2][y2]) {
-				case 'O':
-				case 'X':
-					log << "\t\t\t\tI meet bot/wall!" << endl;
-					hp--;
-					if (hp == 0) {
-						flag = 0;
-						p -> ptr[x][y] = '_';
-					}
-					break;
-				case 'f':
-					log << "\t\t\t\tI meet food!" << endl;
-					p -> ptr[x2][y2] = 'O';
-					p -> ptr[x][y] = '_';
-					x = x2;
-					y = y2;
-					lp += 10;
-					hp += 10;
-					if (hp > 100) {
-						hp = 100;
-					}
-					hp--;
-					p -> spawn_one();
-					break;
-				case 'p':
-					log << "\t\t\t\tI meet poison!" << endl;
-					p -> ptr[x][y] = '_';
-					p -> ptr[x2][y2] = '_';
-					hp = 0;
+		switch (p -> ptr[xg][yg]) {
+			case 'O': case 'X':
+				hp--;
+				if (hp == 0) {
 					flag = 0;
-					p -> spawn_one();
-					break;
-				case '_':
-					log << "\t\t\t\tI meet free geks!" << endl;
-					p -> ptr[x2][y2] = 'O';
 					p -> ptr[x][y] = '_';
-					x = x2;
-					y = y2;
-					hp--;
-					if (hp == 0) {
-						flag = 0;
-						p -> ptr[x2][y2] = '_';
-					}
-					break;
-			}
-	} else if (command >= 32 && command <= 39) {
-		log << "\t\tSmart to go" << endl;
-		switch (command) {
-			case 32: x2++; y2--;
+					log << "\t\t\tgo out: x = " << x
+						<< "; y = " << y << endl;
+				}
 				break;
-			case 33: x2++;
+
+			case 'f':
+				lp += 10;
+				hp += 10;
+				if (hp > 100) {
+					hp = 100;
+				}
+				p -> ptr[x][y] = '_';
+				p -> ptr[xg][yg] = 'O';
+				x = xg;
+				y = yg;
+				hp--;
 				break;
-			case 34: x2++; y2++;
+
+			case 'p':
+				hp = 0;
+				flag = 0;
+				p -> ptr[x][y] = '_';
+				log << "\t\t\tgo out: x = " << x
+					<< "; y = " << y << endl;
 				break;
-			case 35: y2++;
-				break;
-			case 36: x2--; y2++;
-				break;
-			case 37: x2--;
-				break;
-			case 38: x2--; y2--;
-				break;
-			case 39: y2--;
-				break;
+
+			case '_':
+				hp--;
+				if (hp == 0) {
+					flag = 0;
+					log << "\t\t\tgo out: x = " << x
+						<< "; y = " << y << endl;
+				} else {
+					p -> ptr[xg][yg] = 'O';
+					x = xg;
+					y = yg;
+				}
+				p -> ptr[x][y] = '_';
+			 	break;
 		}
-		log << "\t\t\tTo go: x2 = " << x2
-			<< "; y2 = " << y2 << endl;
-		switch (p -> ptr[x2][y2]) {
-				case 'O':
-				case 'X':
-					log << "\t\t\t\tI meet bot/wall!" << endl;
-					hp--;
-					if (hp == 0) {
-						flag = 0;
-						p -> ptr[x][y] = '_';
-					}
-					break;
-				case 'f':
-					log << "\t\t\t\tI meet food!" << endl;
-					p -> ptr[x2][y2] = 'O';
+	} else if (command >= 32 && command <= 39) {
+		log << "\t\tSmart: " << command << endl;
+		switch (command) {
+			case 32: xg++; yg--; break;
+			case 33: xg++; break;
+			case 34: xg++; yg++; break;
+			case 35: yg++; break;
+			case 36: xg--; yg++; break;
+			case 37: xg--; break;
+			case 38: xg--; yg--; break;
+			case 39: yg--; break;
+		}
+		switch (p -> ptr[xg][yg]) {
+			case 'O': case 'X':
+				hp--;
+				if (hp == 0) {
+					flag = 0;
 					p -> ptr[x][y] = '_';
-					x = x2;
-					y = y2;
-					lp += 10;
-					hp += 10;
-					if (hp > 100) {
-						hp = 100;
-					}
-					hp--;
-					p -> spawn_one();
-					break;
-				case 'p':
-					log << "\t\t\t\tI meet poison!" << endl;
-					p -> ptr[x2][y2] = 'O';
-					p -> ptr[x][y] = '_';
-					x = x2;
-					y = y2;
-					lp += 10;
-					hp += 10;
-					if (hp > 100) {
-						hp = 100;
-					}
-					hp--;
-					p -> spawn_one();
-					break;
-				case '_':
-					log << "\t\t\t\tI meet free geks!" << endl;
-					p -> ptr[x2][y2] = 'O';
-					p -> ptr[x][y] = '_';
-					x = x2;
-					y = y2;
-					hp--;
-					if (hp == 0) {
-						flag = 0;
-						p -> ptr[x2][y2] = '_';
-					}
-					break;
-			}
+					log << "\t\t\tgo out: x = " << x
+						<< "; y = " << y << endl;
+				}
+				break;
+
+			case 'f': case 'p':
+				lp += 10;
+				hp += 10;
+				if (hp > 100) {
+					hp = 100;
+				}
+				p -> ptr[x][y] = '_';
+				p -> ptr[xg][yg] = 'O';
+				x = xg;
+				y = yg;
+				hp--;
+				break;
+
+			case '_':
+				hp--;
+				if (hp == 0) {
+					flag = 0;
+					log << "\t\t\tgo out: x = " << x
+						<< "; y = " << y << endl;
+				} else {
+					p -> ptr[xg][yg] = 'O';
+					x = xg;
+					y = yg;
+				}
+				p -> ptr[x][y] = '_';
+			 	break;
+		}
+	} else {
+		log << "\tOUTSIDE: " << command << endl;
 	}
 
 	grn++;
-	if (grn >= gquant) {
+	if (grn > gquant) {
 		grn = grn - gquant - 1;
+	} else if (grn == gquant) {
+		grn = 0;
 	}
-	log << "\tEnd turn (command: " << command << ")" << endl;
+	
+	log << "\tEnd turn!" << endl;
 }

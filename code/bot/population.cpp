@@ -7,7 +7,7 @@ Bot* population(Bot* a, unint q)
 	unint i = 0, j = 0, k = 0, v = 0;
 	unint g = (unint)sqrt(q);
 	Bot* b = new Bot[q];
-	a[0].log << "\t\tg = " << g << endl;
+	a[0].log << "\t\tsqrt(q) = " << g << endl;
 
 	for (i = 0; i < q; i++) {
 		if (a[i].flag) {
