@@ -123,6 +123,7 @@ void Bot::turn(Place* p)
 						hp = 100;
 					}
 					hp--;
+					p -> spawn_one();
 					break;
 				case 'p':
 					log << "\t\t\t\tI meet poison!" << endl;
@@ -130,6 +131,7 @@ void Bot::turn(Place* p)
 					p -> ptr[x2][y2] = '_';
 					hp = 0;
 					flag = 0;
+					p -> spawn_one();
 					break;
 				case '_':
 					log << "\t\t\t\tI meet free geks!" << endl;
@@ -188,6 +190,7 @@ void Bot::turn(Place* p)
 						hp = 100;
 					}
 					hp--;
+					p -> spawn_one();
 					break;
 				case 'p':
 					log << "\t\t\t\tI meet poison!" << endl;
@@ -201,6 +204,7 @@ void Bot::turn(Place* p)
 						hp = 100;
 					}
 					hp--;
+					p -> spawn_one();
 					break;
 				case '_':
 					log << "\t\t\t\tI meet free geks!" << endl;

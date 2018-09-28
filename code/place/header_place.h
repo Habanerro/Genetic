@@ -33,6 +33,7 @@ public:
 	void spawn_food();		// to add foot on the location
 	void spawn_poison();	// to add poison on the location
 	void spawn_bot();		// to add bots on the location
+	void spawn_one();		// spawn one geks of food/poison	
 
 	Place(sPlace);	// normal constructor
 	Place();		// default constrtuctor
