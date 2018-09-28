@@ -15,9 +15,11 @@ class Bot {
 	friend class Place;
 	friend void relationship(Place*, Bot*);
 public:
-	void turn(Place*);	// one turn of one bot
 	Bot();	// constructor
 	~Bot();	// destructor
+	void turn(Place*);	// one turn of one bot
+	void mutation();	// mutation 1 gen
+
 private:
 	unint gquant;	// quantity of gens in genetic matrix
 	unint range;	// range of command
