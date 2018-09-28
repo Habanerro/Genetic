@@ -1,32 +1,63 @@
 #include "header_bot.h"
 
-Bot* population(Bot* a, unint q)
+void population(Bot* a, unint q)
 {
 	a[0].log << "\tCome in population func" << endl;
+	a[0].log << "#POPULATION" << endl;
 
-	unint i = 0, j = 0, k = 0, v = 0;
+	unint i = 0, j = 0, k = 0, next = 0;
+	int free = -1;
 	unint g = (unint)sqrt(q);
-	Bot* b = new Bot[q];
+
+	a[0].log << "\t\tEvery bot must geting " << (g - 1) << " childrens" << endl;
 	a[0].log << "\t\tsqrt(q) = " << g << endl;
 
+	// we must structurization the massive
+	a[0].log << "\t\t\tStandarization..." << endl;
 	for (i = 0; i < q; i++) {
-		if (a[i].flag) {
-			a[0].log << "\t\tWe found undead bot!" << endl;
-			k = j;
-			for (v = 0; v < g; v++) {
-				b[k].grn = a[i].grn;
-				b[k].hp = a[i].hp;
-				b[k].lp = a[i].lp;
-				b[k].flag = 1;
-				b[k].gen = a[i].gen;
-				a[0].log << "\t\t\tb[" << k << "] = a[" << i << "]" << endl;
-				k += g;
+		a[i].grn = 0;
+		a[i].hp = 50;
+		a[i].lp = 50;
+		a[i].x = 0;
+		a[i].y = 0;
+	}
+	a[0].log << "\t\t\t\tEnd of standarization..." << endl;
+	for (i = 0; i < g; i++) {
+		if (a[i].flag == 0) {
+			free = i;
+			a[0].log << "\t\t\tfree = " << free << endl;
+			for (k = free + 1; k < q; k++) {
+				if (a[k].flag == 1) {
+					a[0].log << "\t\t\tk = " << k << endl;
+					for (int j = 0; j < a[0].gquant; j++) {
+						a[free].gen[j] = a[k].gen[j];
+					}
+					a[free].flag = 1;
+					a[k].flag = 0;
+				}
 			}
-			j++;
-			a[0].log <<"\t\tj = " << j << endl;
 		}
 	}
-	return b;
 
-	a[0].log << "\tEnd population func" << endl;
+	a[0].log << "\t\tequivalence" << endl;
+	for (i = 0; i < g; i++) {
+		next = i;
+		while (next < q) {
+			for (int j = 0; j < a[0].gquant; j++) {
+				a[next].gen[j] = a[i].gen[j];
+			}
+			a[next].flag = 1;
+			next += g;
+		}
+	}
+
+	unint t = 1;
+	for (i = 0; i < q; i++) {
+		if (!a[i].flag) {
+			t = 0;
+		}
+	}
+	a[0].log << "\t\tTrue? (" << t << ")" << endl;
+
+	a[0].log << "\tEND population func" << endl;
 }

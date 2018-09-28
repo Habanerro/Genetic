@@ -11,7 +11,10 @@ Place::Place(sPlace a)
 	wall = a.wall;
 	file = a.file;
 
-	char** ptr = NULL;
+	ptr = new char*[height];
+	for (int i = 0; i < height; i++) {
+		ptr[i] = new char[lenght];
+	}
 	log.open("log.txt", ios::app);
 	log << "\t*--normal constructor-place-*" << endl;
 }
