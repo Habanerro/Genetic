@@ -19,6 +19,7 @@ public:
 	~Bot();	// destructor
 	void turn(Place*);	// one turn of one bot
 	void mutation();	// mutation 1 gen
+	void population();	// create new population
 
 private:
 	unint gquant;	// quantity of gens in genetic matrix
