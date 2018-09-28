@@ -45,6 +45,10 @@ void Place::spawn_one()
 				if (v) {i--;} else {j--;}
 				break;
 		}
+		if (i < 0 || i > height || j < 0 || j > lenght) {
+			i = 1 + rand() % nHeight;
+			j = 1 + rand() % nLenght;
+		}
 	}
 	if (what) {
 		// food

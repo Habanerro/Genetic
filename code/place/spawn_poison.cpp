@@ -46,6 +46,10 @@ void Place::spawn_poison()
 						if (v) {i--;} else {j--;}
 						break;
 				}
+				if (i < 0 || i > height || j < 0 || j > lenght) {
+					i = 1 + rand() % nHeight;
+					j = 1 + rand() % nLenght;
+				}
 			}
 			ptr[i][j] = 'p';
 		}
