@@ -20,6 +20,8 @@ void Bot::turn(Place* p)
 
 	while (((command >= 0 && command <= 7) || (command >= 16 && command <= 31)) && cycle == 0) {
 		if (command >= 0 && command <= 7) {
+			xl = x;
+			yl = y;
 			log << "\t\t\tLook (" << command << ")" << endl;
 			switch (command) {
 				case 0: xl++; yl--; break;
@@ -140,10 +142,10 @@ void Bot::turn(Place* p)
 						<< "; y = " << y << endl;
 				} else {
 					p -> ptr[xg][yg] = 'O';
-					x = xg;
-					y = yg;
 				}
 				p -> ptr[x][y] = '_';
+				x = xg;
+				y = yg;
 			 	break;
 		}
 	} else if (command >= 32 && command <= 39) {
@@ -190,10 +192,10 @@ void Bot::turn(Place* p)
 						<< "; y = " << y << endl;
 				} else {
 					p -> ptr[xg][yg] = 'O';
-					x = xg;
-					y = yg;
 				}
 				p -> ptr[x][y] = '_';
+				x = xg;
+				y = yg;
 			 	break;
 		}
 	} else {
