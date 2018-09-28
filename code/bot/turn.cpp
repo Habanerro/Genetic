@@ -221,5 +221,9 @@ void Bot::turn(Place* p)
 			}
 	}
 
+	grn++;
+	if (grn >= gquant) {
+		grn = grn - gquant - 1;
+	}
 	log << "\tEnd turn (command: " << command << ")" << endl;
 }
