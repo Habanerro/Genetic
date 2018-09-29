@@ -19,7 +19,7 @@ int main()
 	a.file = "\0";
 	cPlace p(a);
 	
-	for (g = 1; g < 21; g++) {
+	for (g = 1; g < 51; g++) {
 
 		test << "\t\t" << g << ":" << endl;
 		p.generate_place();

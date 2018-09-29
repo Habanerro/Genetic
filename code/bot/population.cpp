@@ -12,15 +12,23 @@ void population(Bot* a, unint q)
 	a[0].log << "\t\tEvery bot must geting " << (g - 1) << " childrens" << endl;
 	a[0].log << "\t\tsqrt(q) = " << g << endl;
 
+	ofstream pointer;
+	pointer.open("live.txt", ios::app);
+
 	// we must structurization the massive
+	unint live = a[0].lp;
 	a[0].log << "\t\t\tStandarization..." << endl;
 	for (i = 0; i < q; i++) {
 		a[i].grn = 0;
 		a[i].hp = 50;
+		if (a[i].lp < live) {
+			live = a[i].lp;
+		}
 		a[i].lp = 50;
 		a[i].x = 0;
 		a[i].y = 0;
 	}
+	pointer << "Minimal live pointers = " << live << endl;
 	a[0].log << "\t\t\t\tEnd of standarization..." << endl;
 	for (i = 0; i < g; i++) {
 		if (a[i].flag == 0) {
@@ -58,6 +66,7 @@ void population(Bot* a, unint q)
 		}
 	}
 	a[0].log << "\t\tTrue? (" << t << ")" << endl;
+	pointer.close();
 
 	a[0].log << "\tEND population func" << endl;
 }
