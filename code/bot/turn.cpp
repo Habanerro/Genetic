@@ -124,6 +124,7 @@ void Bot::turn(Place* p)
 				x = xg;
 				y = yg;
 				hp--;
+				p -> spawn_one();
 				break;
 
 			case 'p':
@@ -131,7 +132,8 @@ void Bot::turn(Place* p)
 				flag = 0;
 				p -> ptr[x][y] = '_';
 				log << "\t\t\tgo out: x = " << x
-					<< "; y = " << y << endl;
+					<< "; y = " << y << endl;\
+				p -> spawn_one();
 				break;
 
 			case '_':
@@ -182,6 +184,7 @@ void Bot::turn(Place* p)
 				x = xg;
 				y = yg;
 				hp--;
+				p -> spawn_one();
 				break;
 
 			case '_':
