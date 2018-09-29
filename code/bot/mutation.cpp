@@ -13,5 +13,6 @@ void Bot::mutation()
 		gen[i]--;
 	}
 	log << "\t\tMutation: gen = " << i << "; value = " << gen[i] << endl;
+	printf("Mutation: gen = %d; value = %d;\n", i, gen[i]);
 	log << "\tEnd mutation" << endl;
 }

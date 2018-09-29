@@ -8,13 +8,11 @@ void Place::generate_place()
 
 	// to create basis
 	log << "\t\tTo start allocation memory for place" << endl;
-		ptr = new char*[height];
-		for (i = 0; i < height; i++) {
-			ptr[i] = new char[lenght];
-			for (j = 0; j < lenght; j++) {
-				ptr[i][j] = '_';	// free geks
-			}
+	for (i = 0; i < height; i++) {
+		for (j = 0; j < lenght; j++) {
+			ptr[i][j] = '_';	// free geks
 		}
+	}
 	// information for log_place.txt
 		log << "\t\t\tlenght = " << lenght << "\n";
 		log << "\t\t\theight = " << height << "\n";
