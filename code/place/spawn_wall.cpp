@@ -14,13 +14,21 @@ void Place::spawn_wall()
 	unint nLenght = lenght - 10;
 	unint nHeight = height - 10;
 
-	int i = 0, j = 0, g = 0, k = 0, m = 0, n = 0;
+	int i = 0, j = 0, g = 0, k = 0, m = 0, n = 0, v = 0;
 	int a = 0; // buffer for offset
 
 	log << "\t\tStaring generation..." << endl;
 		log << "\t\t\tWe waiting " << segments << " wall's segments" << endl;
 		log << "\t\t\tnHeight = " << nHeight
 			<< "; nLenght = " << nLenght << endl;
+
+		int* xc = new int[all];
+		int* yc = new int[all];
+		int* uu = new int[all]; // used coordinates
+
+		for (i = 0; i < all; i++) {
+			uu[i] = 0;
+		}
 
 		for (k = 0; k < segments; k++) {
 			j = 5 + rand() % nLenght;
@@ -47,14 +55,11 @@ void Place::spawn_wall()
 							}
 						}
 
-						while (ptr[a][j + m] == 'X') {
-							if (delta = 0) {
-								m++;
-							} else {
-								m--;
-							}
+						if (ptr[a][j + m] == 'X') {
+							v++;
+						} else {
+							ptr[a][j + m] = 'X';
 						}
-						ptr[a][j + m] = 'X';
 						a++;
 					}
 					break;
@@ -73,14 +78,12 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
-						while (ptr[a][j + m] == 'X') {
-							if (delta = 0) {
-								m++;
-							} else {
-								m--;
-							}
+
+						if (ptr[a][j + m] == 'X') {
+							v++;
+						} else {
+							ptr[a][j + m] = 'X';
 						}
-						ptr[a][j + m] = 'X';
 						a--;
 					}
 					break;
@@ -99,14 +102,12 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
-						while (ptr[i + m][a] == 'X') {
-							if (delta = 0) {
-								m++;
-							} else {
-								m--;
-							}
+
+						if (ptr[i + m][a] == 'X') {
+							v++;
+						} else {
+							ptr[i + m][a] = 'X';
 						}
-						ptr[i + m][a] = 'X';
 						a++;
 					}
 					break;
@@ -125,19 +126,37 @@ void Place::spawn_wall()
 								m = -1;
 							}
 						}
-						while (ptr[i + m][a] == 'X') {
-							if (delta = 0) {
-								m++;
-							} else {
-								m--;
-							}
+						if (ptr[i + m][a] == 'X') {
+							v++;
+						} else {
+							ptr[i + m][a] = 'X';
 						}
-						ptr[i + m][a] = 'X';
 						a--;
 					}
 					break;
 			}
 		}
+
+	g = 0;
+	for (i = 1; i < height - 1; i++) {
+		for (j = 1; j < lenght - 1; j++) {
+			if (ptr[i][j] == '_') {
+				xc[g] = i;
+				yc[g] = j;
+				g++;
+			}
+		}
+	}
+	log << "\t\tNeed save " << v << " walls" << endl;
+	for (i = 0; i < v; i++) {
+		v = rand() % g;
+		while (uu[v]) {
+			v = rand() % g;
+		}
+			
+		ptr[xc[v]][yc[v]] = 'X';
+		uu[v] = 1;
+	}
 	log << "\t\t\tEnd of generation." << endl;
 
 	log << "\tEnd spawn_wall" << endl;
