@@ -5,6 +5,7 @@ int main()
 	ofstream test;
 	test.open("test_log.txt");
 	int po = 0, f = 0, b = 0, w = 0, g = 0, j = 0, i = 0;
+	cout << "Look test_log.txt!\n" << endl;
 
 	test << "Testing program:" << endl;
 	test << "\tPlace's function:\n\t{" << endl;
