@@ -25,6 +25,7 @@ void save(Place* p, Bot* a, int z)
 		}
 		save_doc << endl;
 	}
+	save_doc << endl;
 
 	for (h = 0; h < p -> bot; h++) {
 		save_doc << "\nBot[" << h << "]" << endl;

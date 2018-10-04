@@ -16,7 +16,7 @@ class Bot {
 	friend void population(Bot*, unint);
 	friend void relationship(Place*, Bot*);
 	friend void save(Place*, Bot*, int);
-	friend void read(Place*, Bot*);
+	friend int read(Place*, Bot*, int*);
 public:
 	Bot();	// constructor
 	~Bot();	// destructor
