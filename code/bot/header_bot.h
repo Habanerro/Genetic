@@ -15,6 +15,7 @@ class Bot {
 	friend class Place;
 	friend void population(Bot*, unint);
 	friend void relationship(Place*, Bot*);
+	friend void save(Place*, Bot*, int);
 public:
 	Bot();	// constructor
 	~Bot();	// destructor
@@ -31,7 +32,7 @@ private:
 	unint y;		// coordinates of bot on the location
 	unint flag;		// information of live - 0 = dead
 
-	uchar* gen;		// genetic matrix
+	int* gen;		// genetic matrix
 	ofstream log;	// information about working
 };
 typedef class Bot cBot;
