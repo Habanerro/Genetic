@@ -14,12 +14,12 @@ int main()
 
 	// starting place
 		sPlace a;
-		a.lenght = 20;
-		a.height = 20;
-		a.bot = 9;
-		a.food = 72;
-		a.poison = 36;
-		a.wall = 30;
+		a.lenght = 28;
+		a.height = 21;
+		a.bot = 49;
+		a.food = 110;
+		a.poison = 70;
+		a.wall = 20;
 		a.file = "\0";
 
 	Place p(a);
