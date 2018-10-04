@@ -11,7 +11,7 @@ Bot::Bot()
 	y = 0;
 	flag = 1;
 
-	gen = new uchar[gquant];
+	gen = new int[gquant];
 	for (int i = 0; i < gquant; i++) {
 		gen[i] = rand() % range;
 	}
