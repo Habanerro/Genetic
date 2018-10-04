@@ -12,7 +12,7 @@ void save(Place* p, Bot* a, int z)
 	save_doc << "#ВНИМАНИЕ:\n"
 			 << "#Правка документа приведет к НАРУШЕНИЮ РАБОТЫ ПРОГРАММЫ\n" << endl;
 
-	save_doc << "population: [" << z << "]\n" << endl;
+	save_doc << "population:\n" << z << endl;
 
 	log << "\t\tSave place..." << endl;
 	save_doc << "Place:\n" << endl;
@@ -25,10 +25,11 @@ void save(Place* p, Bot* a, int z)
 		}
 		save_doc << endl;
 	}
+	save_doc << endl;
 
 	for (h = 0; h < p -> bot; h++) {
 		save_doc << "\nBot[" << h << "]" << endl;
-		save_doc << "x = " << a[h].x << "; y = " << a[h].y << endl << endl;
+		save_doc << "x =\n" << a[h].x << "\ny =\n" << a[h].y << endl << endl;
 		g = 0;
 		for (k = 0; k < a[0].gquant; k++) {
 			save_doc << " ";

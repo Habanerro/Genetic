@@ -14,7 +14,7 @@ struct SettingsPlace {
 	unint lenght;	// quantity of cols - длина
 	unint height;	// quantity of rows - высота
 	unint bot;		// quantity of bots		'O'()
-	unint food;		// quantity of food 	'h'()
+	unint food;		// quantity of food 	'f'()
 	unint poison;	// quantity of poison 	'p'()
 	unint wall; 	// quantity of wall's 	'X'()
 	string file;	// name of file of the settings
@@ -27,6 +27,7 @@ class Place {
 	friend class Bot;
 	friend void relationship(Place*, Bot*);
 	friend void save(Place*, Bot*, int);
+	friend int read(Place*, Bot*, int*);
 public:
 	void generate_place();	// to create basis of place
 	void print_place();		// to show genetic location
