@@ -28,7 +28,7 @@ void save(Place* p, Bot* a, int z)
 
 	for (h = 0; h < p -> bot; h++) {
 		save_doc << "\nBot[" << h << "]" << endl;
-		save_doc << "x =\n" << a[h].x << "; y =\n" << a[h].y << endl << endl;
+		save_doc << "x =\n" << a[h].x << "\ny =\n" << a[h].y << endl << endl;
 		g = 0;
 		for (k = 0; k < a[0].gquant; k++) {
 			save_doc << " ";
