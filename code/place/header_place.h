@@ -14,7 +14,7 @@ struct SettingsPlace {
 	unint lenght;	// quantity of cols - длина
 	unint height;	// quantity of rows - высота
 	unint bot;		// quantity of bots		'O'()
-	unint food;		// quantity of food 	'h'()
+	unint food;		// quantity of food 	'f'()
 	unint poison;	// quantity of poison 	'p'()
 	unint wall; 	// quantity of wall's 	'X'()
 	string file;	// name of file of the settings
