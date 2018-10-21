@@ -132,8 +132,7 @@ void Bot::turn(Place* p)
 				flag = 0;
 				p -> ptr[x][y] = '_';
 				log << "\t\t\tgo out: x = " << x
-					<< "; y = " << y << endl;\
-				p -> spawn_one();
+					<< "; y = " << y << endl;
 				break;
 
 			case '_':
