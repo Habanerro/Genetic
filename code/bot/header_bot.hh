@@ -6,9 +6,19 @@
 #include <cmath>
 #include <ctime>
 
-#include "../place/header_place.h"
+#include "../place/header_place.hh"
 typedef unsigned char uchar;
 using namespace std;
+
+class Prev {
+private:
+	int useless;
+public:
+	Prev();
+	~Prev();
+	void put(int);
+	int get();
+};
 
 class Bot {
 	friend int main();
@@ -36,4 +46,5 @@ private:
 	int* gen;		// genetic matrix
 	ofstream log;	// information about working
 };
+
 typedef class Bot cBot;
