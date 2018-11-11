@@ -42,7 +42,7 @@ int main()
 		save(&p, b, z);
 	}
 
-	while (z < 4000) { // 4000 поколений
+	while (z < 10000) { // 10000 поколений
 		score = 0;
 		while (score < deadline) {
 			for (int i = 0; i < q && score < deadline; i++) {
@@ -73,6 +73,9 @@ int main()
 		printf("End of Pupulation %d\n", z);
 		z++;
 		b[index].mutation();
+		b[index].mutation();
+		b[index].mutation();
+
 		population(b, q);
 		p.generate_place();
 		p.spawn_wall();
