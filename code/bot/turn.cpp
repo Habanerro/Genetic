@@ -196,6 +196,7 @@ void Bot::turn(Place* p)
 					p -> ptr[xg][yg] = 'O';
 				}
 				p -> ptr[x][y] = '_';
+				p -> spawn_one();
 				x = xg;
 				y = yg;
 			 	break;
