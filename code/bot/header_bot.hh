@@ -10,16 +10,6 @@
 typedef unsigned char uchar;
 using namespace std;
 
-class Prev {
-private:
-	int useless;
-public:
-	Prev();
-	~Prev();
-	void put(int);
-	int get();
-};
-
 class Bot {
 	friend int main();
 	friend class Place;
