@@ -28,6 +28,9 @@ void Place::print_place()
 					case 'p':
 						printf("\033[31m  *\033[0m");
 						break;
+					case '&':
+						printf("\033[1m  %c\033[0m", ptr[i][j]);
+						break;
 				}
 			}
 		} 

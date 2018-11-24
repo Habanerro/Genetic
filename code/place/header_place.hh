@@ -35,7 +35,8 @@ public:
 	void spawn_food();		// to add foot on the location
 	void spawn_poison();	// to add poison on the location
 	void spawn_bot();		// to add bots on the location
-	void spawn_one();		// spawn one geks of food/poison	
+	void spawn_one();		// spawn one geks of food/poison
+	void spawn_predator();	// spawn predators on the location
 
 	Place(sPlace);	// normal constructor
 	Place();		// default constrtuctor
@@ -45,6 +46,7 @@ private:
 	unint height;	// quantity of rows
 	unint all;		// quantity of all cell points
 	unint bot;		// quantity of bots
+	unint predator;	// quantity of predators
 	unint food;		// quantity of food points
 	unint poison;	// quantity of poison points
 	unint wall;		// quantity of wall points
