@@ -35,3 +35,15 @@ Bot::~Bot()
 	log << "\t*--destructor-bot-*" << endl;
 	log.close();
 }
+
+Predator::Predator()
+{
+	this -> hp = 70;
+	this -> lp = 70;
+	log << "\t*--constructor-predator-*" << endl;
+}
+
+Predator::~Predator()
+{
+	log << "\t*--destructor-predator-*" << endl;
+}

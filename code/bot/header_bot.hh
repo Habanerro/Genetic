@@ -47,4 +47,17 @@ private:
 	ofstream log;	// information about working
 };
 
+class Predator: public Bot {
+	friend int main();
+	friend class Place;
+	friend void population(Bot*, unint);
+	friend void relationship(Place*, Bot*);
+	friend void save(Place*, Bot*, int);
+	friend int read(Place*, Bot*, int*);
+public:
+	Predator();
+	~Predator();
+	int turn(Place*, Bot*);
+};
+
 typedef class Bot cBot;
