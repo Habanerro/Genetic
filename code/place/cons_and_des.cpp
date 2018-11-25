@@ -16,7 +16,7 @@ Place::Place(sPlace a)
 	for (int i = 0; i < height; i++) {
 		ptr[i] = new char[lenght];
 	}
-	log.open("log.txt", ios::app);
+	//log.open("log.txt", ios::app);
 	log << "\t*--normal constructor-place-*" << endl;
 }
 
@@ -33,7 +33,7 @@ Place::Place()
 	file = "\0";
 
 	char** ptr = NULL;
-	log.open("log.txt", ios::app);
+	//log.open("log.txt", ios::app);
 	log << "\t*--default constructor-place-*" << endl;
 }
 

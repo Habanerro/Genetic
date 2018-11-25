@@ -9,7 +9,7 @@ int read(Place*, Bot*, int, Predator*);
 int main()
 {
 	ofstream log_m;
-	log_m.open("log.txt");
+	//log_m.open("log.txt");
 	log_m << "Program:" << endl;
 
 	// starting place
