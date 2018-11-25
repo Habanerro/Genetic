@@ -3,7 +3,7 @@
 
 void relationship(Place b, Bot* a, Predator* dat);
 void population(Bot* a, unint q);
-void save(Place*, Bot*, int);
+void save(Place*, Bot*, int, Predator*);
 int read(Place*, Bot*, int);
 
 int main()
@@ -30,8 +30,10 @@ int main()
 	unint score = 0;
 	int index = -1, g = 0, z = 0;
 	unint q_bot = p.bot, q_dat = p.predator;
+
 	unint deadline_bot = q_bot - (unint)sqrt(q_bot);
 	unint deadline_predator = q_dat - (unint)sqrt(q_dat);
+
 	int way = read(&p, b, &z);
 
 	if (!way) {	// new
@@ -43,7 +45,7 @@ int main()
 		p.spawn_poison();
 		p.print_place();
 		relationship(&p, b, dat);
-		save(&p, b, z);
+		save(&p, b, z, dat);
 	}
 
 	while (z < 10000) { // 10000 поколений
@@ -89,7 +91,7 @@ int main()
 		p.spawn_poison();
 		p.print_place();
 		relationship(&p, b, dat);
-		save(&p, b, z);
+		save(&p, b, z, dat);
 		sleep(3);
 	}
 

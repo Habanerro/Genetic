@@ -27,8 +27,8 @@ void relationship(Place* a, Bot* c, Predator* dat)
 						 << "x = " << i
 						 << "; y = " << j
 						 << "; g = " << g << endl;
-				c[g].x = i;
-				c[g].y = j;
+				dat[g].x = i;
+				dat[g].y = j;
 				g++;
 			}
 		}

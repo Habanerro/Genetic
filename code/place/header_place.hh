@@ -28,7 +28,7 @@ class Place {
 	friend class Bot;
 	friend class Predator;
 	friend void relationship(Place*, Bot*, Predator*);
-	friend void save(Place*, Bot*, int);
+	friend void save(Place*, Bot*, int, Predator*);
 	friend int read(Place*, Bot*, int*);
 public:
 	void generate_place();	// to create basis of place
