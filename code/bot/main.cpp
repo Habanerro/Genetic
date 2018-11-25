@@ -1,7 +1,7 @@
 #include "header_bot.hh"
 #include <unistd.h>
 
-void relationship(Bot* a, Place b);
+void relationship(Place b, Bot* a, Predator* dat);
 void population(Bot* a, unint q);
 void save(Place*, Bot*, int);
 int read(Place*, Bot*, int);
@@ -42,7 +42,7 @@ int main()
 		p.spawn_predator();
 		p.spawn_poison();
 		p.print_place();
-		relationship(&p, b);
+		relationship(&p, b, dat);
 		save(&p, b, z);
 	}
 
@@ -88,7 +88,7 @@ int main()
 		p.spawn_predator();
 		p.spawn_poison();
 		p.print_place();
-		relationship(&p, b);
+		relationship(&p, b, dat);
 		save(&p, b, z);
 		sleep(3);
 	}
