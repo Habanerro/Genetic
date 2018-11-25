@@ -237,7 +237,7 @@ int Predator::turn(Place* p, Bot* b)
 	unint xl, yl;	// coordinates for look
 	unint xg, yg;	// coordinate for go
 	unint command;	// command for doing
-	unint search = 0, getBack;
+	unint search = 0, getBack = 0;
 
 	command = gen[grn];
 	xl = x; yl = y;
