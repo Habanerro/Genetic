@@ -16,7 +16,8 @@ int main()
 		sPlace a;
 		a.lenght = 28;
 		a.height = 21;
-		a.bot = 49;
+		a.bot = 36;
+		a.predator = 16;
 		a.food = 110;
 		a.poison = 70;
 		a.wall = 20;
