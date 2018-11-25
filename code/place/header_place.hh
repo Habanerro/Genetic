@@ -26,6 +26,7 @@ typedef struct SettingsPlace sPlace;
 class Place {
 	friend int main();
 	friend class Bot;
+	friend class Predator;
 	friend void relationship(Place*, Bot*);
 	friend void save(Place*, Bot*, int);
 	friend int read(Place*, Bot*, int*);

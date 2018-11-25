@@ -25,11 +25,13 @@ int main()
 
 	Place p(a);
 	Bot* b = new Bot[p.bot];
+	Predator* dat = new Predator[p.predator];
 
 	unint score = 0;
 	int index = -1, g = 0, z = 0;
-	unint q = p.bot;
-	unint deadline = q - (unint)sqrt(q);
+	unint q_bot = p.bot, q_dat = p.predator;
+	unint deadline_bot = q_bot - (unint)sqrt(q_bot);
+	unint deadline_predator = q_dat - (unint)sqrt(q_dat);
 	int way = read(&p, b, &z);
 
 	if (!way) {	// new
@@ -46,8 +48,8 @@ int main()
 
 	while (z < 10000) { // 10000 поколений
 		score = 0;
-		while (score < deadline) {
-			for (int i = 0; i < q && score < deadline; i++) {
+		while (score < deadline_bot) {
+			for (int i = 0; i < q_bot && score < deadline_bot; i++) {
 				if (b[i].flag) {
 					b[i].turn(&p);
 					p.print_place();
@@ -60,14 +62,14 @@ int main()
 		g = 0;
 		index = -1;
 		// we want found first undead bot
-		while (index == -1 && g < q) {
+		while (index == -1 && g < q_bot) {
 			if (b[g].flag) {
 				index = g;
 			}
 			g++;
 		}
 		// we found minimal lp with all undead bots
-		for (int j = 1; j < q; j++) {
+		for (int j = 1; j < q_bot; j++) {
 			if ((b[j].lp < b[index].lp) && b[j].flag) {
 				index = j;
 			}
@@ -78,7 +80,7 @@ int main()
 		b[index].mutation();
 		b[index].mutation();
 
-		population(b, q);
+		population(b, q_bot);
 		p.generate_place();
 		p.spawn_wall();
 		p.spawn_food();
