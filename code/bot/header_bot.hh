@@ -33,7 +33,7 @@ public:
 	void turn(Place*);	// one turn of one bot
 	void mutation();	// mutation 1 gen
 
-private:
+protected:
 	unint gquant;	// quantity of gens in genetic matrix
 	unint range;	// range of command
 	unint grn;		// gen right now - pointer to gen in genetic matrix
