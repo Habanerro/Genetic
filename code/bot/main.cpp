@@ -4,7 +4,7 @@
 void relationship(Place b, Bot* a, Predator* dat);
 void population(Bot* a, unint q);
 void save(Place*, Bot*, int, Predator*);
-int read(Place*, Bot*, int);
+int read(Place*, Bot*, int, Predator*);
 
 int main()
 {
@@ -34,7 +34,7 @@ int main()
 	unint deadline_bot = q_bot - (unint)sqrt(q_bot);
 	unint deadline_predator = q_dat - (unint)sqrt(q_dat);
 
-	int way = read(&p, b, &z);
+	int way = read(&p, b, &z, dat);
 
 	if (!way) {	// new
 		p.generate_place();

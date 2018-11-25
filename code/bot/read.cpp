@@ -1,7 +1,7 @@
 #include "header_bot.hh"
 #include <unistd.h>
 
-int read(Place* p, Bot* a, int* z)
+int read(Place* p, Bot* a, int* z, Predator* dat)
 {
 	system("cls");
 	cout << "Hello!\n"
@@ -29,7 +29,7 @@ int read(Place* p, Bot* a, int* z)
 		return 0;
 	}
 
-	// russian language
+	// Russian language
 	// Мы предупредили о невозможности изменения документа last_save.txt
 	// Любое изменение - на свой страх и риск
 	// мы точно знаем с каких строк начинать считывание
@@ -93,6 +93,37 @@ int read(Place* p, Bot* a, int* z)
 			for (j = 0; j < a[0].gquant; j++) {
 				cout << " ";
 				cout << a[k].gen[j];
+				g++;
+				if (g == 10) {
+					cout << endl;
+					g = 0;
+				}
+			}
+			cout << endl;
+			getline(ifs, buf);
+		}
+		for (k = 0; k < p -> predator; k++) {
+			getline(ifs, buf);
+			getline(ifs, buf);
+			getline(ifs, buf);
+			getline(ifs, buf);
+			ifs >> num;
+			dat[k].x = num;
+			getline(ifs, buf);
+			getline(ifs, buf);
+			ifs >> num;
+			dat[k].y = num;
+			cout << "\nPredator " << k << " x = " << dat[k].x << " y = " << dat[k].y << endl << endl;
+			getline(ifs, buf);
+			getline(ifs, buf);
+			for (i = 0; i < a[0].gquant; i++) {
+				ifs >> num;
+				dat[k].gen[i] = num;
+			}
+			g = 0;
+			for (j = 0; j < a[0].gquant; j++) {
+				cout << " ";
+				cout << dat[k].gen[j];
 				g++;
 				if (g == 10) {
 					cout << endl;

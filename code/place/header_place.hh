@@ -29,7 +29,7 @@ class Place {
 	friend class Predator;
 	friend void relationship(Place*, Bot*, Predator*);
 	friend void save(Place*, Bot*, int, Predator*);
-	friend int read(Place*, Bot*, int*);
+	friend int read(Place*, Bot*, int*, Predator*);
 public:
 	void generate_place();	// to create basis of place
 	void print_place();		// to show genetic location

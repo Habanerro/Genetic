@@ -17,7 +17,7 @@ class Bot {
 	friend void population(Bot*, unint);
 	friend void relationship(Place*, Bot*, Predator*);
 	friend void save(Place*, Bot*, int, Predator*);
-	friend int read(Place*, Bot*, int*);
+	friend int read(Place*, Bot*, int*, Predator*);
 public:
 	Bot();	// constructor
 	~Bot();	// destructor
@@ -44,7 +44,7 @@ class Predator: public Bot {
 	friend void population(Bot*, unint);
 	friend void relationship(Place*, Bot*, Predator*);
 	friend void save(Place*, Bot*, int, Predator*);
-	friend int read(Place*, Bot*, int*);
+	friend int read(Place*, Bot*, int*, Predator*);
 public:
 	Predator();
 	~Predator();
