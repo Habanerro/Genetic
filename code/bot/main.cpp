@@ -4,7 +4,7 @@
 void relationship(cBot* a, cPlace b);
 void population(Bot* a, unint q);
 void save(Place*, Bot*, int);
-
+int read(Place*, Bot*, int);
 
 int main()
 {
