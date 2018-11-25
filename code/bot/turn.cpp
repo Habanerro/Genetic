@@ -103,7 +103,7 @@ void Bot::turn(Place* p)
 			case 15: yg--; break;
 		}
 		switch (p -> ptr[xg][yg]) {
-			case 'O': case 'X':
+			case 'O': case 'X': case '#':
 				hp--;
 				if (hp == 0) {
 					flag = 0;
@@ -162,7 +162,7 @@ void Bot::turn(Place* p)
 			case 39: yg--; break;
 		}
 		switch (p -> ptr[xg][yg]) {
-			case 'O': case 'X':
+			case 'O': case 'X': case '#':
 				hp--;
 				if (hp == 0) {
 					flag = 0;
