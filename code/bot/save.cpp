@@ -1,6 +1,6 @@
 #include "header_bot.hh"
 
-void save(Place* p, Bot* a, int z)
+void save(Place* p, Bot* a, int z, Predator* dat)
 {
 	cout << "\nAuto save!" << endl;
 	
@@ -34,6 +34,21 @@ void save(Place* p, Bot* a, int z)
 		for (k = 0; k < a[0].gquant; k++) {
 			save_doc << " ";
 			save_doc << a[h].gen[k];
+			g++;
+			if (g == 10) {
+				save_doc << endl;
+				g = 0;
+			}
+		}
+		save_doc << endl;
+	}
+	for (h = 0; h < p -> predator; h++) {
+		save_doc << "\nPredator[" << h << "]" << endl;
+		save_doc << "x =\n" << dat[h].x << "\ny =\n" << dat[h].y << endl << endl;
+		g = 0;
+		for (k = 0; k < dat[0].gquant; k++) {
+			save_doc << " ";
+			save_doc << dat[h].gen[k];
 			g++;
 			if (g == 10) {
 				save_doc << endl;

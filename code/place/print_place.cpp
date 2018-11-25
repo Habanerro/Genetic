@@ -3,7 +3,7 @@
 void Place::print_place()
 {
 	log << "\tTo print" << endl;
-	unint o = 0;
+	unint o = 0, z = 0;
 	
 	system("cls");
 		log << "\t\t Clear console" << endl;
@@ -28,8 +28,9 @@ void Place::print_place()
 					case 'p':
 						printf("\033[31m  *\033[0m");
 						break;
-					case '&':
-						printf("\033[1m  %c\033[0m", ptr[i][j]);
+					case '#':
+						printf("\033[36m  #\033[0m");
+						z++;
 						break;
 				}
 			}
@@ -38,6 +39,11 @@ void Place::print_place()
 			log << "#ADD: bot: " << o - bot << endl;
 		} else {
 			log << "#have " << o << " bots" << endl;
+		}
+		if (z > bot) {
+			log << "#ADD: predator: " << z - predator << endl;
+		} else {
+			log << "#have " << z << " predators" << endl;
 		}
 		cout << endl;
 

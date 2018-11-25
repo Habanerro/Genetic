@@ -6,6 +6,7 @@ Place::Place(sPlace a)
 	height = a.height;
 	all = lenght * height;
 	bot = a.bot;
+	predator = a.predator;
 	food = a.food;
 	poison = a.poison;
 	wall = a.wall;
@@ -25,13 +26,14 @@ Place::Place()
 	height = 0;
 	all = 0;
 	bot = 0;
+	predator = 0;
 	food = 0;
 	poison = 0;
 	wall = 0;
 	file = "\0";
 
 	char** ptr = NULL;
-	log.open("log.txt", ios::app);
+	//log.open("log.txt", ios::app);
 	log << "\t*--default constructor-place-*" << endl;
 }
 
@@ -41,6 +43,7 @@ Place::~Place()
 	height = 0;
 	all = 0;
 	bot = 0;
+	predator = 0;
 	food = 0;
 	poison = 0;
 	wall = 0;

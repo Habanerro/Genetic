@@ -1,4 +1,5 @@
 #include "header_bot.hh"
+#include <unistd.h>
 
 Bot::Bot()
 {
@@ -18,6 +19,7 @@ Bot::Bot()
 
 	//log.open("log.txt", ios::app);
 	log << "\t*--constructor-bot-*" << endl;
+	sleep(1);
 }
 
 Bot::~Bot()
@@ -34,4 +36,16 @@ Bot::~Bot()
 	delete gen;
 	log << "\t*--destructor-bot-*" << endl;
 	log.close();
+}
+
+Predator::Predator()
+{
+	this -> hp = 70;
+	this -> lp = 70;
+	log << "\t*--constructor-predator-*" << endl;
+}
+
+Predator::~Predator()
+{
+	log << "\t*--destructor-predator-*" << endl;
 }

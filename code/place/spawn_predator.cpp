@@ -32,8 +32,7 @@ void Place::spawn_predator()
 			while (uu[v]) {
 				v = rand() % g;
 			}
-			
-			ptr[xc[v]][yc[v]] = '&';
+			ptr[xc[v]][yc[v]] = '#';
 			uu[v] = 1;
 		}
 		delete xc;
