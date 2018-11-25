@@ -14,7 +14,7 @@ class Bot {
 	friend int main();
 	friend class Place;
 	friend class Predator;
-	friend void population(Bot*, unint);
+	friend void population(Bot*, unint, Predator*, unint);
 	friend void relationship(Place*, Bot*, Predator*);
 	friend void save(Place*, Bot*, int, Predator*);
 	friend int read(Place*, Bot*, int*, Predator*);
@@ -41,7 +41,7 @@ protected:
 class Predator: public Bot {
 	friend int main();
 	friend class Place;
-	friend void population(Bot*, unint);
+	friend void population(Bot*, unint, Predator, unint);
 	friend void relationship(Place*, Bot*, Predator*);
 	friend void save(Place*, Bot*, int, Predator*);
 	friend int read(Place*, Bot*, int*, Predator*);

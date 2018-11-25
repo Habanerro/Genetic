@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 void relationship(Place b, Bot* a, Predator* dat);
-void population(Bot* a, unint q);
+void population(Bot* a, unint q, Predator*, unint c);
 void save(Place*, Bot*, int, Predator*);
 int read(Place*, Bot*, int, Predator*);
 
@@ -82,7 +82,7 @@ int main()
 		b[index].mutation();
 		b[index].mutation();
 
-		population(b, q_bot);
+		population(b, q_bot, dat, q_dat);
 		p.generate_place();
 		p.spawn_wall();
 		p.spawn_food();
