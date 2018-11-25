@@ -9,7 +9,7 @@ int read(Place*, Bot*, int);
 int main()
 {
 	ofstream log_m;
-	//log_m.open("log.txt");
+	log_m.open("log.txt");
 	log_m << "Program:" << endl;
 
 	// starting place
@@ -37,6 +37,7 @@ int main()
 		p.spawn_wall();
 		p.spawn_food();
 		p.spawn_bot();
+		p.spawn_predator();
 		p.spawn_poison();
 		p.print_place();
 		relationship(&p, b);
@@ -82,6 +83,7 @@ int main()
 		p.spawn_wall();
 		p.spawn_food();
 		p.spawn_bot();
+		p.spawn_predator();
 		p.spawn_poison();
 		p.print_place();
 		relationship(&p, b);

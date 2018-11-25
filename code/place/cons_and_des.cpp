@@ -16,7 +16,7 @@ Place::Place(sPlace a)
 	for (int i = 0; i < height; i++) {
 		ptr[i] = new char[lenght];
 	}
-	//log.open("log.txt", ios::app);
+	log.open("log.txt", ios::app);
 	log << "\t*--normal constructor-place-*" << endl;
 }
 
