@@ -52,7 +52,7 @@ int main()
 		score_bot = 0, score_dat = 0;
 
 		// go while not dealine
-		while (score_bot < deadline_bot && score_dat < deadline_predator) {
+		while (score_bot < deadline_bot || score_dat < deadline_predator) {
 			for (int i = 0; i < q_bot && score_bot < deadline_bot; i++) {
 				if (b[i].flag) {
 					b[i].turn(&p);
@@ -89,6 +89,7 @@ int main()
 				index_bot = j;
 			}
 		}
+		log_m << "&&index_bot = " << index_bot << endl;
 
 		g = 0;
 		index_dat = -1;
@@ -100,19 +101,25 @@ int main()
 			g++;
 		}
 		// we found minimal lp with all undead predators
-		for (int j = 1; j < q_bot; j++) {
+		for (int j = 1; j < q_dat; j++) {
 			if ((dat[j].lp < dat[index_dat].lp) && dat[j].flag) {
 				index_dat = j;
 			}
 		}
+		log_m << "&&index_bot = " << index_dat << endl;
 
 
 		z++;
 		b[index_bot].mutation();
+		sleep(1);
 		b[index_bot].mutation();
+		sleep(1);
 		b[index_bot].mutation();
+		sleep(1);
 		dat[index_dat].mutation();
+		sleep(1);
 		dat[index_dat].mutation();
+		sleep(1);
 		dat[index_dat].mutation();
 
 		// хищники могли съесть часть ботов, пока те бездействовали

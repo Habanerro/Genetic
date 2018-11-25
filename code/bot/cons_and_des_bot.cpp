@@ -1,4 +1,5 @@
 #include "header_bot.hh"
+#include <unistd.h>
 
 Bot::Bot()
 {
@@ -18,6 +19,7 @@ Bot::Bot()
 
 	log.open("log.txt", ios::app);
 	log << "\t*--constructor-bot-*" << endl;
+	sleep(1);
 }
 
 Bot::~Bot()
