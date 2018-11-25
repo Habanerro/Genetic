@@ -1,7 +1,7 @@
 #include "header_bot.hh"
 #include <unistd.h>
 
-void relationship(cBot* a, cPlace b);
+void relationship(Bot* a, Place b);
 void population(Bot* a, unint q);
 void save(Place*, Bot*, int);
 int read(Place*, Bot*, int);

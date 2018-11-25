@@ -14,6 +14,7 @@ struct SettingsPlace {
 	unint lenght;	// quantity of cols - длина
 	unint height;	// quantity of rows - высота
 	unint bot;		// quantity of bots		'O'()
+	unint predator;	// quantity of predators'#'()
 	unint food;		// quantity of food 	'f'()
 	unint poison;	// quantity of poison 	'p'()
 	unint wall; 	// quantity of wall's 	'X'()
@@ -35,6 +36,7 @@ public:
 	void spawn_food();		// to add foot on the location
 	void spawn_poison();	// to add poison on the location
 	void spawn_bot();		// to add bots on the location
+	void spawn_predator();	// to add predators on the location
 	void spawn_one();		// spawn one geks of food/poison	
 
 	Place(sPlace);	// normal constructor
@@ -45,6 +47,7 @@ private:
 	unint height;	// quantity of rows
 	unint all;		// quantity of all cell points
 	unint bot;		// quantity of bots
+	unint predator;	// quantity of predator
 	unint food;		// quantity of food points
 	unint poison;	// quantity of poison points
 	unint wall;		// quantity of wall points
@@ -55,5 +58,3 @@ private:
 	ofstream log;	// inforamtion about working
 };
 typedef class Place cPlace;
-
-void relationship(Place*, Bot*);
