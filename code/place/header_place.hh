@@ -8,6 +8,7 @@
 
 using namespace std;
 typedef unsigned int unint;
+typedef unsigned char uchar;
 
 // start settings of place
 struct SettingsPlace {
@@ -59,3 +60,47 @@ private:
 	ofstream log;	// inforamtion about working
 };
 typedef class Place cPlace;
+
+
+class Bot {
+	friend int main();
+	friend class Place;
+	friend class Predator;
+	friend void population(Bot*, unint, Predator*, unint);
+	friend void relationship(Place*, Bot*, Predator*);
+	friend void save(Place*, Bot*, int, Predator*);
+	friend int read(Place*, Bot*, int*, Predator*);
+public:
+	Bot();	// constructor
+	~Bot();	// destructor
+	void turn(Place*);	// one turn of one bot
+	void mutation();	// mutation 1 gen
+
+protected:
+	unint gquant;	// quantity of gens in genetic matrix
+	unint range;	// range of command
+	unint grn;		// gen right now - pointer to gen in genetic matrix
+	unint hp;		// healths points
+	unint lp;		// live points - all hp in the bot's live
+	unint x;		// 
+	unint y;		// coordinates of bot on the location
+	unint flag;		// information of live - 0 = dead
+
+	int* gen;		// genetic matrix
+	ofstream log;	// information about working
+};
+
+class Predator: public Bot {
+	friend int main();
+	friend class Place;
+	friend void population(Bot*, unint, Predator, unint);
+	friend void relationship(Place*, Bot*, Predator*);
+	friend void save(Place*, Bot*, int, Predator*);
+	friend int read(Place*, Bot*, int*, Predator*);
+public:
+	Predator();
+	~Predator();
+	int turn(Place*, Bot*);
+};
+
+typedef class Bot cBot;

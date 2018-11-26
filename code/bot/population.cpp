@@ -1,4 +1,4 @@
-#include "header_bot.hh"
+#include "../place/header_place.hh"
 
 void population(Bot* a, unint q_bot, Predator* dat, unint q_dat)
 {

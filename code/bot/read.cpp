@@ -1,4 +1,4 @@
-#include "header_bot.hh"
+#include "../place/header_place.hh"
 #include <unistd.h>
 
 int read(Place* p, Bot* a, int* z, Predator* dat)
