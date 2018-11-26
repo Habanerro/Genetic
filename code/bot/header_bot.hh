@@ -52,7 +52,3 @@ public:
 };
 
 typedef class Bot cBot;
-
-class Predator: private Bot {
-
-};
